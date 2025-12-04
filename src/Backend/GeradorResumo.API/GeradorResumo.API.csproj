@@ -12,7 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\GeradorResumo.Application\GeradorResumo.Application.csproj" />
+    <ProjectReference Include="..\GeradorResumo.Infrastructure\GeradorResumo.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

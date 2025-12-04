@@ -10,6 +10,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{1FA447B2-1546-4EC9-B448-F0901C05BC5C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeradorResumo.API", "src\Backend\GeradorResumo.API\GeradorResumo.API.csproj", "{9EDBA5BE-5534-448C-BC91-85F543EF10D7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AEED3A6B-6747-48E5-85AB-BA63E250A910} = {AEED3A6B-6747-48E5-85AB-BA63E250A910}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeradorResumo.Domain", "src\Backend\GeradorResumo.Domain\GeradorResumo.Domain.csproj", "{6851E4D5-D17E-4610-A80A-E788137F8342}"
 EndProject
