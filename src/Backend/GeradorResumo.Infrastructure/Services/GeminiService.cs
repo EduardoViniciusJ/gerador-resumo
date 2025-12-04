@@ -22,10 +22,18 @@ namespace GeradorResumo.Infrastructure.Services
             if (string.IsNullOrWhiteSpace(text))
                 return "Por favor, escreva um texto maior para que eu possa gerar um resumo.";
 
+            if (text.Length > 20000)
+            {   
+                return "Texto muito grande para gerar resumo.";
+            }
+
+
             var response = await _client.Models.GenerateContentAsync(
                 model: _model,
-                contents: $"Resuma o texto abaixo em no máximo 2 linhas, mantendo clareza e objetividade:\n\n{text}"
+                contents: $"Resuma o texto abaixo em no máximo 2 linhas, mantendo clareza e objetividade:{text}"
+
             );
+
 
             var summary = ExtractText(response); 
 
