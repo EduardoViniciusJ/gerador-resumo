@@ -1,46 +1,85 @@
 <div class="min-h-screen bg-gray-50 flex flex-col">
   <!-- Main Content -->
   <main class="grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+
     <!-- Title Section -->
     <div class="text-center mb-12">
       <h1 class="text-4xl font-bold text-gray-900 mb-4">
         Transforme Texto em Resumos Instantâneos
       </h1>
+
       <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-        Cole seu texto, clique em gerar e receba um resumo conciso em segundos. 
+        Cole seu texto, clique em gerar e receba um resumo conciso em segundos.
         Simples, rápido e eficiente.
       </p>
     </div>
 
     <!-- Input Section -->
     <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+
       <label class="block text-sm font-medium text-gray-700 mb-2">
         Cole ou digite seu texto aqui
       </label>
+
       <textarea
+        [(ngModel)]="text"
         rows="8"
         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
         placeholder="Cole seu artigo, documento ou qualquer texto que você deseja resumir..."
       ></textarea>
-      
+
       <div class="flex justify-end space-x-4 mt-4">
         <button
+          (click)="clear()"
           class="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors font-medium"
         >
           Limpar
         </button>
+
         <button
-          class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+          type="button"
+          (click)="generateSummary()"
+          [disabled]="loading || !text.trim()"
+          class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Gerar Resumo
+          {{ loading ? 'Gerando...' : 'Gerar Resumo' }}
         </button>
       </div>
     </div>
 
-    <!-- Empty State -->
-    <div class="text-center py-12">
-      <p class="text-gray-500">Nenhum resumo gerado ainda. Comece digitando um texto acima!</p>
-    </div>
+    <!-- Seção RESUMO GERADO -->
+    <section class="mt-8">
+
+      @if (error) {
+        <!-- Mensagem de erro -->
+        <div class="bg-red-50 border border-red-200 rounded-lg p-6 mb-4">
+          <p class="text-red-700">{{ error }}</p>
+        </div>
+      }
+
+      @if (loading) {
+        <!-- Loading -->
+        <div class="text-center py-12">
+          <p class="text-gray-500">Gerando resumo, aguarde...</p>
+        </div>
+      } @else if (summary?.text) {
+        <!-- Resumo -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+            Resumo Gerado
+          </h2>
+          <p class="text-gray-700 whitespace-pre-line">{{ summary?.text }}</p>
+        </div>
+      } @else if (!error) {
+        <!-- Estado vazio -->
+        <div class="text-center py-12">
+          <p class="text-gray-500">
+            Nenhum resumo gerado ainda. Comece digitando um texto acima!
+          </p>
+        </div>
+      }
+
+    </section>
+
   </main>
 </div>
-
