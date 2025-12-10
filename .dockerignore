@@ -1,0 +1,37 @@
+# Arquivos de build
+**/bin/
+**/obj/
+**/node_modules/
+
+# Arquivos do Visual Studio
+**/.vs/
+**/.vscode/
+*.user
+*.suo
+
+# Arquivos de teste
+**/tests/
+
+# Frontend (não necessário para o backend)
+src/Frontend/
+
+# Arquivos de configuração local
+**/appsettings.Development.json
+**/launchSettings.json
+
+# Git
+.git/
+.gitignore
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Documentação
+README.md
+*.md
+
+# Outros
+**/.DS_Store
+**/Thumbs.db
+
