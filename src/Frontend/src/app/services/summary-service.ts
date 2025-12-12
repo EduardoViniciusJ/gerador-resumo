@@ -11,5 +11,7 @@ export class SummaryService {
 
     genereteSummary(text: string): Observable<Summary> {
         return this.http.post<Summary>(`${this.apiUrl}/resumo`, { text });
-    }
+    } 
+
+    
 }
