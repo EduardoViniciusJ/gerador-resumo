@@ -1,5 +1,5 @@
 export const environment = {
 
     production: false,
-    API_URL: 'https://localhost:7234/api/Summary'
+    API_URL: 'https://gerador-resumo.onrender.com/api/Summary'
 };

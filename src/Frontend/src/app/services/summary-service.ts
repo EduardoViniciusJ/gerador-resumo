@@ -5,8 +5,9 @@ import { Summary } from "../interfaces/summary-interface";
 import { Observable } from "rxjs";
 
 export class SummaryService {
+
     private http = inject(HttpClient);
-    private readonly apiUrl = `${environment.API_URL}`;   
+    private readonly apiUrl = environment.API_URL;
 
     genereteSummary(text: string): Observable<Summary> {
         return this.http.post<Summary>(`${this.apiUrl}/resumo`, { text });
